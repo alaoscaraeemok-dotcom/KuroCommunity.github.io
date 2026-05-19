@@ -1,5 +1,5 @@
 import { db } from './firebase-config.js';
-import { ref, onValue, push } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+import { ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
 // Ler atualizações do Firebase
 const updatesContainer = document.getElementById('updatesContainer');
@@ -29,9 +29,3 @@ onValue(updatesRef, (snapshot) => {
 // Estatísticas simuladas
 document.getElementById('youtubeStats').innerHTML = `
   <p><i class="fa fa-users mr-2"></i> Inscritos: <span class="font-semibold">+1.200</span></p>
-  <p><i class="fa fa-play-circle mr-2"></i> Visualizações: <span class="font-semibold">+15.000</span></p>
-`;
-
-document.getElementById('discordStats').innerHTML = `
-  <p><i class="fa fa-users mr-2"></i> Membros: <span class="font-semibold">+800</span></p>
-  <p><i class="fa fa-comments
