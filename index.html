@@ -11,18 +11,21 @@
       theme: {
         extend: {
           colors: {
-            primary: '#b80000',
-            secondary: '#d10000',
-            accent: '#ff1a1a',
-            light: '#fff8f8',
-            dark: '#2b0000'
+            primary: '#990000',
+            secondary: '#cc0000',
+            accent: '#ff2222',
+            dark: '#0f0404',
+            darkLight: '#1e0a0a',
+            medium: '#441111',
+            light: '#ffeeee'
           },
           fontFamily: {
-            elegant: ['Playfair Display', 'serif'],
-            sans: ['Poppins', 'sans-serif']
+            elegant: ['Cinzel', 'serif'],
+            sans: ['Inter', 'sans-serif']
           },
           backgroundImage: {
             'petals': "url('https://i.pinimg.com/originals/8e/88/63/8e88639c65a499246c9209f9698809c6.png')",
+            'floral-pattern': "url('https://www.transparenttextures.com/patterns/dark-flower.png')",
           }
         }
       }
@@ -30,49 +33,97 @@
   </script>
   <style type="text/tailwindcss">
     @layer utilities {
-      .text-shadow {
-        text-shadow: 2px 2px 4px rgba(184, 0, 0, 0.2);
+      .text-shadow-glow {
+        text-shadow: 0 0 12px rgba(153, 0, 0, 0.6), 0 0 24px rgba(153, 0, 0, 0.3);
       }
       .decorative-line {
         background: url('https://i.pinimg.com/originals/6d/89/7c/6d897c30672958e7c62f7909b6d49772.png') center/contain no-repeat;
-        height: 80px;
+        height: 90px;
         margin: 2rem auto;
+        filter: drop-shadow(0 0 8px rgba(153, 0, 0, 0.4));
       }
-      .escondido {
-        display: none;
+      .escondido { display: none; }
+      .mostrar { display: block !important; }
+      .glass {
+        background: rgba(30, 10, 10, 0.65);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(153, 0, 0, 0.2);
       }
-      .mostrar {
-        display: block !important;
+      .glass-light {
+        background: rgba(60, 15, 15, 0.4);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(200, 0, 0, 0.15);
       }
-      .animate-fall {
-        animation: fall 8s linear infinite;
+      .hover-lift {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      @keyframes fall {
+      .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(153, 0, 0, 0.25);
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-petal-fall {
+        animation: petalFall 10s linear infinite;
+      }
+      .animate-fade-in {
+        animation: fadeIn 1.2s ease-out forwards;
+      }
+      .delay-100 { animation-delay: 0.1s; }
+      .delay-200 { animation-delay: 0.2s; }
+      .delay-300 { animation-delay: 0.3s; }
+      .delay-400 { animation-delay: 0.4s; }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes petalFall {
         0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
-        10% { opacity: 1; }
-        100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+        10% { opacity: 0.7; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .text-gradient {
+        background: linear-gradient(90deg, #ff4444, #990000);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="bg-light min-h-screen font-sans text-dark relative overflow-x-hidden">
-  <!-- Animação de Pétalas Caindo - IMAGEM CORRIGIDA -->
-  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 bg-petals bg-repeat-y opacity-70"></div>
+<body class="bg-gradient-to-br from-dark via-darkLight to-medium min-h-screen font-sans text-light relative overflow-x-hidden bg-floral-pattern">
 
-  <!-- Elemento decorativo superior - IMAGEM CORRIGIDA -->
-  <div class="decorative-line w-32 relative z-10"></div>
+  <!-- Animação de Pétalas Caindo -->
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+    <div class="absolute w-full h-full bg-petals bg-repeat-y opacity-40"></div>
+    <!-- Pétalas aleatórias animadas -->
+    <div class="absolute w-4 h-4 rounded-full bg-accent/20 animate-petal-fall" style="left:10%; animation-duration: 8.5s;"></div>
+    <div class="absolute w-3 h-3 rounded-full bg-primary/30 animate-petal-fall" style="left:25%; animation-duration: 11s; animation-delay: 1s;"></div>
+    <div class="absolute w-5 h-5 rounded-full bg-secondary/25 animate-petal-fall" style="left:40%; animation-duration: 9.2s; animation-delay: 2s;"></div>
+    <div class="absolute w-4 h-4 rounded-full bg-accent/20 animate-petal-fall" style="left:60%; animation-duration: 10.5s; animation-delay: 0.5s;"></div>
+    <div class="absolute w-3 h-3 rounded-full bg-primary/30 animate-petal-fall" style="left:80%; animation-duration: 8s; animation-delay: 1.5s;"></div>
+  </div>
+
+  <!-- Elemento decorativo superior -->
+  <div class="decorative-line w-32 relative z-10 animate-float"></div>
 
   <!-- Cabeçalho -->
-  <header class="py-12 px-4 text-center relative z-10">
+  <header class="py-16 px-4 text-center relative z-10 animate-fade-in">
     <div class="relative z-10">
-      <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-elegant font-bold text-primary text-shadow mb-3">
+      <h1 class="text-[clamp(3rem,6vw,5rem)] font-elegant font-extrabold text-gradient text-shadow-glow mb-4 tracking-wider">
         Flores Vermelhas
       </h1>
-      <p class="text-lg md:text-xl max-w-2xl mx-auto text-dark/70">
-        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à KuroCommunity.
+      <p class="text-lg md:text-xl max-w-2xl mx-auto text-light/80 font-light">
+        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à <span class="font-semibold text-accent">KuroCommunity</span>.
       </p>
     </div>
   </header>
@@ -81,63 +132,63 @@
   <div class="decorative-line w-24"></div>
 
   <!-- Seção Sobre o Projeto -->
-  <section class="max-w-5xl mx-auto px-4 py-6 relative z-10">
-    <h2 class="text-[clamp(1.8rem,3vw,2.2rem)] font-elegant font-bold text-center text-primary mb-8">
+  <section class="max-w-5xl mx-auto px-4 py-8 relative z-10">
+    <h2 class="text-[clamp(2rem,4vw,2.8rem)] font-elegant font-bold text-center text-accent mb-10 text-shadow-glow animate-fade-in">
       Sobre o Projeto
     </h2>
-    <div class="bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-primary/10">
-      <p class="mb-4 text-dark/80 leading-relaxed">
+    <div class="glass p-10 rounded-[2rem] shadow-2xl animate-fade-in delay-100 hover:shadow-[0_0_30px_rgba(153,0,0,0.2)] transition-shadow duration-500">
+      <p class="mb-6 text-light/90 leading-relaxed text-lg">
         Tudo começou com uma paixão por compartilhar conhecimento, histórias e momentos especiais. O canal é o lugar onde gravo vídeos com muito carinho, sobre os assuntos que mais gosto, sempre com uma pitada de criatividade e originalidade.
       </p>
-      <p class="text-dark/80 leading-relaxed">
+      <p class="text-light/90 leading-relaxed text-lg">
         A comunidade foi criada para reunir pessoas que têm os mesmos interesses, onde todos podem conversar, trocar ideias, fazer amizades e crescer juntos. Aqui, cada membro é parte fundamental dessa história.
       </p>
     </div>
   </section>
 
   <!-- Seção Principal -->
-  <main class="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-10 relative z-10">
+  <main class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-12 relative z-10">
     <!-- Canal YouTube -->
-    <section class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl p-8 border border-primary/10 transition-transform hover:-translate-y-2 duration-300">
-      <div class="flex items-center mb-6">
-        <i class="fa fa-youtube-play text-[clamp(2rem,4vw,3rem)] text-accent mr-4"></i>
-        <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Canal do YouTube</h2>
+    <section class="glass p-10 rounded-[2rem] shadow-2xl hover-lift animate-fade-in delay-200">
+      <div class="flex items-center mb-8">
+        <i class="fa fa-youtube-play text-[clamp(2.5rem,5vw,3.5rem)] text-accent mr-5 drop-shadow-[0_0_8px_rgba(255,34,34,0.5)]"></i>
+        <h2 class="text-[clamp(1.8rem,3.5vw,2.4rem)] font-elegant font-bold text-accent">Canal do YouTube</h2>
       </div>
-      <p class="mb-4 text-dark/70">
+      <p class="mb-5 text-light/85 text-lg">
         Inscreva-se para acompanhar vídeos novos, tutoriais, lives e todo o conteúdo que preparo com muito carinho para você. Sempre trago temas variados, dicas exclusivas e momentos divertidos.
       </p>
-      <ul class="list-disc list-inside mb-6 text-dark/70 space-y-1">
+      <ul class="list-disc list-inside mb-8 text-light/80 space-y-2 text-base">
         <li>Vídeos novos toda semana</li>
         <li>Lives interativas com os inscritos</li>
         <li>Conteúdo exclusivo para quem acompanha de perto</li>
       </ul>
-      <a href="https://youtube.com/seu-canal" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary/90 hover:bg-primary text-white px-6 py-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-2xl">
+      <a href="https://youtube.com/seu-canal" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-light px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(153,0,0,0.4)] transform hover:scale-[1.03] active:scale-[0.98]">
         Acessar Canal
       </a>
-      <div id="youtubeStats" class="mt-6 p-4 bg-light/80 rounded-xl border border-primary/10">
-        <p class="text-sm">Carregando estatísticas...</p>
+      <div id="youtubeStats" class="mt-8 p-5 glass-light rounded-xl border border-primary/10">
+        <p class="text-light/70">Carregando estatísticas...</p>
       </div>
     </section>
 
     <!-- Comunidade Discord -->
-    <section class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl p-8 border border-primary/10 transition-transform hover:-translate-y-2 duration-300">
-      <div class="flex items-center mb-6">
-        <i class="fa fa-discord text-[clamp(2rem,4vw,3rem)] text-primary mr-4"></i>
-        <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Comunidade Discord</h2>
+    <section class="glass p-10 rounded-[2rem] shadow-2xl hover-lift animate-fade-in delay-300">
+      <div class="flex items-center mb-8">
+        <i class="fa fa-discord text-[clamp(2.5rem,5vw,3.5rem)] text-primary mr-5 drop-shadow-[0_0_8px_rgba(153,0,0,0.5)]"></i>
+        <h2 class="text-[clamp(1.8rem,3.5vw,2.4rem)] font-elegant font-bold text-primary">Comunidade Discord</h2>
       </div>
-      <p class="mb-4 text-dark/70">
+      <p class="mb-5 text-light/85 text-lg">
         Junte-se a nós! Um espaço seguro e amigável para conversar, compartilhar ideias, fazer amigos e ficar por dentro de tudo em primeira mão. É o coração do nosso projeto.
       </p>
-      <ul class="list-disc list-inside mb-6 text-dark/70 space-y-1">
+      <ul class="list-disc list-inside mb-8 text-light/80 space-y-2 text-base">
         <li>Canais para todos os assuntos</li>
         <li>Eventos e sorteios exclusivos</li>
         <li>Contato direto comigo e com outros membros</li>
       </ul>
-      <a href="https://discord.gg/D32rR9C2NQ" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent/90 hover:bg-accent text-white px-6 py-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-2xl">
+      <a href="https://discord.gg/D32rR9C2NQ" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-secondary to-accent hover:from-accent hover:to-secondary text-light px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(200,0,0,0.4)] transform hover:scale-[1.03] active:scale-[0.98]">
         Entrar na Comunidade
       </a>
-      <div id="discordStats" class="mt-6 p-4 bg-light/80 rounded-xl border border-primary/10">
-        <p class="text-sm">Carregando informações...</p>
+      <div id="discordStats" class="mt-8 p-5 glass-light rounded-xl border border-primary/10">
+        <p class="text-light/70">Carregando informações...</p>
       </div>
     </section>
   </main>
@@ -146,71 +197,25 @@
   <div class="decorative-line w-24"></div>
 
   <!-- Seção de Curiosidades Ocultas -->
-  <section class="max-w-4xl mx-auto px-4 py-8 mb-16 text-center relative z-10">
-    <button id="botaoCuriosidades" class="bg-primary/90 hover:bg-primary text-light px-8 py-3 rounded-xl font-medium transition-all shadow-lg mb-6">
-      🕵️‍♂️ Ver Curiosidades Ocultas
+  <section class="max-w-4xl mx-auto px-4 py-10 mb-20 text-center relative z-10 animate-fade-in delay-400">
+    <button id="botaoCuriosidades" class="bg-gradient-to-r from-darkLight to-medium hover:from-medium hover:to-darkLight border border-primary/30 text-accent px-10 py-4 rounded-xl font-elegant font-semibold transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(153,0,0,0.3)] text-lg">
+      🕵️‍♂️ Revelar Segredos Ocultos
     </button>
 
-    <div id="caixaCuriosidades" class="escondido bg-white/60 backdrop-blur-md rounded-3xl shadow-xl p-8 border border-primary/20">
-      <h3 class="text-2xl font-elegant font-semibold text-primary mb-6">Segredos e Curiosidades 🌹</h3>
+    <div id="caixaCuriosidades" class="escondido glass mt-10 p-10 rounded-[2rem] shadow-2xl border border-accent/20">
+      <h3 class="text-3xl font-elegant font-bold text-accent mb-8 text-shadow-glow">Segredos & Curiosidades 🌹</h3>
       
-      <div class="grid md:grid-cols-2 gap-6 text-left">
-        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
-          <p class="font-semibold text-primary">💡 Por que "Flores Vermelhas"?</p>
-          <p class="text-dark/70 mt-1">Escolhi esse nome porque as flores vermelhas representam paixão, amor e intensidade — tudo o que coloco em cada vídeo e interação com vocês.</p>
+      <div class="grid md:grid-cols-2 gap-8 text-left">
+        <div class="p-5 glass-light rounded-xl border-l-4 border-accent/50 hover:border-accent transition-colors duration-300">
+          <p class="font-semibold text-accent text-lg mb-2">💡 Por que "Flores Vermelhas"?</p>
+          <p class="text-light/80">Escolhi esse nome porque as flores vermelhas representam paixão, amor e intensidade — tudo o que coloco em cada vídeo e interação com vocês.</p>
         </div>
 
-        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
-          <p class="font-semibold text-primary">🎯 O primeiro vídeo</p>
-          <p class="text-dark/70 mt-1">O primeiro vídeo foi gravado sem nenhuma preparação, só com a vontade de compartilhar algo legal. Hoje ele é um dos meus favoritos!</p>
+        <div class="p-5 glass-light rounded-xl border-l-4 border-accent/50 hover:border-accent transition-colors duration-300">
+          <p class="font-semibold text-accent text-lg mb-2">🎯 O primeiro vídeo</p>
+          <p class="text-light/80">O primeiro vídeo foi gravado sem nenhuma preparação, só com a vontade de compartilhar algo legal. Hoje ele é um dos meus favoritos!</p>
         </div>
 
-        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
-          <p class="font-semibold text-primary">✨ O símbolo secreto</p>
-          <p class="text-dark/70 mt-1">Sempre coloco uma flor vermelha escondida em cada vídeo ou arte. Quem encontrar pode ganhar um cargo especial na comunidade 😏</p>
-        </div>
-
-        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
-          <p class="font-semibold text-primary">🤝 Nossa maior conquista</p>
-          <p class="text-dark/70 mt-1">Mais do que números, ver pessoas se tornando amigas e criando projetos juntos dentro da comunidade é o meu maior orgulho.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Conteúdo Dinâmico Firebase -->
-  <section class="max-w-4xl mx-auto px-4 py-8 mb-16 relative z-10">
-    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-elegant font-bold text-center text-primary mb-10">
-      Atualizações Recentes
-    </h2>
-    <div id="updatesContainer" class="space-y-4">
-      <p class="text-center text-dark/60">Carregando novidades...</p>
-    </div>
-  </section>
-
-  <!-- Rodapé -->
-  <footer class="bg-primary/90 text-light py-8 px-4 text-center relative z-10">
-    <p class="mb-2">© 2026 - Todos os direitos reservados | KuroCommunity</p>
-    <p class="text-sm text-light/70">Criado com ❤️ e inspiração em paixão e beleza</p>
-  </footer>
-
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js"></script>
-  <script type="module" src="firebase-config.js"></script>
-  <script type="module" src="script.js"></script>
-
-  <!-- Script para mostrar/esconder curiosidades -->
-  <script>
-    const botao = document.getElementById('botaoCuriosidades');
-    const caixa = document.getElementById('caixaCuriosidades');
-
-    botao.addEventListener('click', () => {
-      caixa.classList.toggle('mostrar');
-      botao.textContent = caixa.classList.contains('mostrar') 
-        ? '🙈 Ocultar Curiosidades' 
-        : '🕵️‍♂️ Ver Curiosidades Ocultas';
-    });
-  </script>
-</body>
-</html>
+        <div class="p-5 glass-light rounded-xl border-l-4 border-accent/50 hover:border-accent transition-colors duration-300">
+          <p class="font-semibold text-accent text-lg mb-2">✨ O símbolo secreto</p>
+          <p class="text-light/80">Sempre coloco uma flor vermelha escondida em cada vídeo ou arte. Quem encontrar pode ganhar um cargo especial na comunidade
