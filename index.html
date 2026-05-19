@@ -12,18 +12,16 @@
       theme: {
         extend: {
           colors: {
-            // CORES NOVAS CONFORME VOCÊ PEDIU
-            roxoProfundo: '#4B1D57',    // Roxo-profundo
-            azulMeiaNoite: '#272757',   // Azul-meia-noite
-            brancoFume: '#F5F5F5',      // Branco-fumê
-            // Variações para sombras e efeitos
-            roxoClaro: '#5D256E',
-            azulClaro: '#323270',
-            roxoEscuro: '#3A1744',
-            azulEscuro: '#1E1E45',
-            // Fundo base
-            escuroBase: '#12121F',
-            escuroClaro: '#1A1A2E'
+            // CORES AJUSTADAS: Roxo MAIS NÍTIDO e forte, azul equilibrado, branco suave
+            roxoProfundo: '#4B1D57',    // Roxo principal mais vivo
+            roxoIntenso: '#582266',     // Tom mais forte
+            roxoClaro: '#702B80',       // Destaque roxo
+            azulMeiaNoite: '#272757',   // Azul mantido, harmônico
+            azulIntenso: '#303070',
+            brancoFume: '#F5F5F5',      // Branco suave
+            cinzaSuave: '#E0E0EB',      // Tom intermediário para harmonia
+            escuroBase: '#181828',       // Fundo escuro equilibrado
+            escuroClaro: '#222238'
           },
           fontFamily: {
             elegant: ['"Montserrat"', 'Arial', 'sans-serif'],
@@ -35,31 +33,32 @@
   </script>
 
   <style>
-    /* RESET E BASE */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* SOMBRA DE TEXTO LEVE E ELEGANTE */
     .text-shadow-suave {
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(75, 29, 87, 0.2);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(75, 29, 87, 0.25);
+    }
+    .text-shadow-forte {
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(88, 34, 102, 0.4);
     }
 
-    /* UTILITÁRIOS DE VISIBILIDADE */
     .escondido { display: none; }
     .mostrar { display: block !important; }
 
-    /* EFEITO VIDRO COM AS NOVAS CORES */
+    /* Efeito vidro com roxo mais nítido */
     .glass {
-      background: rgba(39, 39, 87, 0.25);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(75, 29, 87, 0.3);
+      background: rgba(75, 29, 87, 0.18);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(88, 34, 102, 0.35);
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 32px rgba(39, 39, 87, 0.15);
     }
     .glass::before {
       content: '';
@@ -68,58 +67,61 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(245, 245, 245, 0.05), transparent);
-      transition: left 0.7s ease;
+      background: linear-gradient(90deg, transparent, rgba(245, 245, 245, 0.08), transparent);
+      transition: left 0.8s ease;
     }
     .glass:hover::before { left: 100%; }
     .glass:hover {
-      border-color: rgba(245, 245, 245, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(75, 29, 87, 0.25);
+      border-color: rgba(112, 43, 128, 0.55);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(75, 29, 87, 0.25);
+      background: rgba(75, 29, 87, 0.25);
     }
 
     .glass-light {
-      background: rgba(75, 29, 87, 0.15);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(39, 39, 87, 0.2);
+      background: rgba(39, 39, 87, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(75, 29, 87, 0.22);
       transition: all 0.4s ease;
     }
     .glass-light:hover {
-      background: rgba(75, 29, 87, 0.25);
-      border-color: rgba(245, 245, 245, 0.3);
+      background: rgba(75, 29, 87, 0.2);
+      border-color: rgba(112, 43, 128, 0.4);
     }
 
-    /* DEGRADÊS PERSONALIZADOS COM AS CORES NOVAS */
+    /* Degradês com roxo mais forte e harmonia */
     .degrade-principal {
-      background: linear-gradient(135deg, #4B1D57 0%, #272757 50%, #4B1D57 100%);
+      background: linear-gradient(135deg, #582266 0%, #4B1D57 35%, #272757 70%, #303070 100%);
     }
     .degrade-texto {
-      background: linear-gradient(135deg, #F5F5F5 0%, #D4D4E7 30%, #B888C9 60%, #7A67EE 100%);
+      background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 25%, #C9A3D6 55%, #702B80 85%, #582266 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
     }
     .degrade-botao {
-      background: linear-gradient(135deg, #4B1D57 0%, #272757 100%);
+      background: linear-gradient(135deg, #582266 0%, #4B1D57 50%, #272757 100%);
       transition: all 0.4s ease;
+      border: 1px solid rgba(245, 245, 245, 0.15);
     }
     .degrade-botao:hover {
-      background: linear-gradient(135deg, #5D256E 0%, #323270 100%);
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 8px 20px rgba(39, 39, 87, 0.3);
+      background: linear-gradient(135deg, #702B80 0%, #582266 50%, #303070 100%);
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 10px 25px rgba(75, 29, 87, 0.3), 0 0 15px rgba(39, 39, 87, 0.2);
+      border-color: rgba(245, 245, 245, 0.3);
     }
 
-    /* LINHA DIVISÓRIA ESTILIZADA */
     .divisor {
-      width: 180px;
+      width: 200px;
       height: 4px;
-      background: linear-gradient(90deg, transparent, #4B1D57, #272757, transparent);
+      background: linear-gradient(90deg, transparent, #582266, #4B1D57, #272757, transparent);
       margin: 3rem auto;
-      border-radius: 4px;
+      border-radius: 6px;
       position: relative;
-      animation: brilho 3s infinite;
+      animation: brilho 3.5s infinite;
+      box-shadow: 0 0 12px rgba(75, 29, 87, 0.3);
     }
     .divisor::after {
       content: '';
@@ -127,130 +129,122 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
+      width: 70px;
       height: 100%;
       background: #F5F5F5;
-      border-radius: 4px;
-      filter: blur(4px);
+      border-radius: 6px;
+      filter: blur(5px);
+      opacity: 0.8;
     }
 
-    /* ANIMAÇÕES DIVERSAS */
+    /* Animações melhoradas */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
     @keyframes flutuar {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
+      50% { transform: translateY(-10px); }
     }
     @keyframes brilho {
-      0%, 100% { box-shadow: 0 0 10px rgba(75, 29, 87, 0.4); }
-      50% { box-shadow: 0 0 20px rgba(39, 39, 87, 0.6); }
+      0%, 100% { box-shadow: 0 0 15px rgba(88, 34, 102, 0.4); }
+      50% { box-shadow: 0 0 28px rgba(39, 39, 87, 0.6); }
     }
     @keyframes pulsar {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.06); }
     }
 
-    .animar-entrada { animation: fadeIn 1.2s ease-out forwards; }
+    .animar-entrada { animation: fadeIn 1.3s ease-out forwards; }
     .animar-flutuar { animation: flutuar 6s ease-in-out infinite; }
     .animar-brilho { animation: brilho 4s infinite; }
-    .animar-pulsar { animation: pulsar 2s infinite; }
+    .animar-pulsar { animation: pulsar 2.5s infinite; }
 
-    /* ATRASOS DE ANIMAÇÃO */
     .delay-100 { animation-delay: 0.1s; }
     .delay-200 { animation-delay: 0.2s; }
     .delay-300 { animation-delay: 0.3s; }
     .delay-400 { animation-delay: 0.4s; }
     .delay-500 { animation-delay: 0.5s; }
     .delay-600 { animation-delay: 0.6s; }
+    .delay-700 { animation-delay: 0.7s; }
+
+    /* Textos maiores e mais detalhados */
+    .texto-detalhado {
+      line-height: 1.8;
+      font-size: 1.05rem;
+      color: #E8E8F2;
+    }
   </style>
 
-  <!-- FONTE MONTserrat LIMPA E BONITA -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-br from-escuroBase via-azulMeiaNoite/40 to-roxoProfundo/30 min-h-screen font-sans text-brancoFume relative overflow-x-hidden">
+<body class="bg-gradient-to-br from-escuroBase via-roxoProfundo/20 to-azulMeiaNoite/30 min-h-screen font-sans text-brancoFume relative overflow-x-hidden">
 
-  <!-- FUNDO DECORATIVO COM PADRÃO -->
-  <div class="fixed top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
-    <div class="absolute w-full h-full" style="background-image: radial-gradient(circle, #F5F5F5 1px, transparent 1px); background-size: 50px 50px;"></div>
+  <!-- Fundo decorativo -->
+  <div class="fixed top-0 left-0 w-full h-full opacity-[0.04] pointer-events-none">
+    <div class="absolute w-full h-full" style="background-image: radial-gradient(circle, #FFFFFF 1px, transparent 1px); background-size: 50px 50px;"></div>
   </div>
 
-  <!-- CABEÇALHO PRINCIPAL -->
-  <header class="py-24 px-4 text-center relative z-10 animar-entrada">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-[clamp(4rem,8vw,7rem)] font-elegant font-extrabold degrade-texto text-shadow-suave mb-6 tracking-wider animar-flutuar">
+  <!-- CABEÇALHO -->
+  <header class="py-28 px-4 text-center relative z-10 animar-entrada">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-[clamp(4.5rem,9vw,7.5rem)] font-elegant font-extrabold degrade-texto text-shadow-forte mb-6 tracking-wider animar-flutuar">
         Flores Vermelhas
       </h1>
-      <p class="text-lg md:text-xl text-brancoFume/85 font-light leading-relaxed">
-        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à <span class="font-semibold text-roxoClaro">KuroCommunity</span>, um espaço criado com amor para compartilhar conhecimento, histórias e construir amizades duradouras.
+      <p class="text-lg md:text-xl text-brancoFume/90 font-light leading-relaxed max-w-3xl mx-auto">
+        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à <span class="font-semibold text-roxoClaro">KuroCommunity</span>, um espaço criado com amor para compartilhar conhecimento, histórias e construir amizades que vão além da tela.
       </p>
     </div>
   </header>
 
   <div class="divisor"></div>
 
-  <!-- SEÇÃO: SOBRE O PROJETO -->
-  <section class="max-w-6xl mx-auto px-6 py-16 relative z-10">
-    <h2 class="text-[clamp(2.2rem,5vw,3.2rem)] font-elegant font-bold text-center degrade-texto text-shadow-suave mb-16 animar-entrada delay-100">
+  <!-- SEÇÃO: SOBRE O PROJETO (MAIOR E MAIS DETALHADO) -->
+  <section class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+    <h2 class="text-[clamp(2.5rem,5.5vw,3.5rem)] font-elegant font-bold text-center degrade-texto text-shadow-forte mb-20 animar-entrada delay-100">
       Sobre o Projeto
     </h2>
 
-    <div class="grid md:grid-cols-2 gap-10 items-center">
-      <div class="glass p-10 rounded-[2.5rem] shadow-2xl animar-entrada delay-200">
-        <h3 class="text-2xl font-elegant font-semibold text-brancoFume mb-6 border-b border-roxoProfundo/40 pb-3">Nossa História</h3>
-        <p class="text-brancoFume/90 leading-relaxed text-lg mb-4">
-          Tudo começou com uma simples paixão: compartilhar o que sabemos, o que aprendemos e o que amamos. O projeto nasceu da vontade de criar algo único, autêntico e cheio de significado — representado pelas cores que definem nossa identidade: <strong class="text-roxoClaro">profundidade</strong>, <strong class="text-azulClaro">estabilidade</strong> e <strong class="text-brancoFume">pureza</strong>.
+    <div class="grid md:grid-cols-2 gap-12 items-stretch">
+      <div class="glass p-12 rounded-[3rem] shadow-2xl animar-entrada delay-200 h-full">
+        <h3 class="text-3xl font-elegant font-semibold text-brancoFume mb-8 border-b-2 border-roxoIntenso/40 pb-4">Nossa História e Propósito</h3>
+        <p class="texto-detalhado mb-6">
+          Tudo começou com uma simples, mas profunda paixão: compartilhar o que sabemos, o que aprendemos e tudo aquilo que realmente amamos. O projeto <strong class="text-roxoClaro">Flores Vermelhas</strong> nasceu da vontade de criar algo único, autêntico e cheio de significado — representado pelas cores que definem nossa identidade: <strong class="text-roxoClaro">roxo-profundo</strong> simboliza sabedoria e criatividade, <strong class="text-azulIntenso">azul-meia-noite</strong> representa confiança e estabilidade, e o <strong class="text-brancoFume">branco-fumê</strong> traz pureza e transparência em tudo o que fazemos.
         </p>
-        <p class="text-brancoFume/90 leading-relaxed text-lg">
-          Não é apenas um canal ou um grupo, é uma família digital onde todos podem conversar, trocar ideias, ajudar uns aos outros e crescer juntos. Aqui, cada membro é parte fundamental dessa história.
+        <p class="texto-detalhado">
+          Não somos apenas um canal ou um grupo de internet. Somos uma família, um lugar onde todos podem conversar, trocar ideias, ajudar uns aos outros, compartilhar sonhos e crescer juntos. Aqui, cada membro é parte fundamental dessa história, e a sua voz é tão importante quanto a nossa.
         </p>
       </div>
 
-      <div class="glass p-10 rounded-[2.5rem] shadow-2xl animar-entrada delay-300">
-        <h3 class="text-2xl font-elegant font-semibold text-brancoFume mb-6 border-b border-azulMeiaNoite/40 pb-3">O Que Fazemos</h3>
-        <ul class="space-y-4 text-lg">
-          <li class="flex items-start gap-3">
-            <i class="fa fa-video-camera text-roxoClaro text-xl mt-1"></i>
-            <span>Conteúdos em vídeo variados: tutoriais, histórias, reflexões e bastidores.</span>
+      <div class="glass p-12 rounded-[3rem] shadow-2xl animar-entrada delay-300 h-full">
+        <h3 class="text-3xl font-elegant font-semibold text-brancoFume mb-8 border-b-2 border-azulIntenso/40 pb-4">O Que Desenvolvemos</h3>
+        <ul class="space-y-6 texto-detalhado">
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="fa fa-video-camera text-brancoFume text-lg"></i>
+            </div>
+            <div>
+              <strong class="text-roxoClaro text-lg">Conteúdo Criativo:</strong> Vídeos com tutoriais completos, histórias envolventes, reflexões profundas, bastidores exclusivos e dicas práticas para o dia a dia.
+            </div>
           </li>
-          <li class="flex items-start gap-3">
-            <i class="fa fa-users text-azulClaro text-xl mt-1"></i>
-            <span>Comunidade ativa no Discord com eventos, sorteios e conversas diárias.</span>
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="fa fa-users text-brancoFume text-lg"></i>
+            </div>
+            <div>
+              <strong class="text-azulClaro text-lg">Comunidade Ativa:</strong> Nosso servidor no Discord é o coração do projeto, com eventos semanais, sorteios especiais, canais temáticos e conversas que acontecem 24h por dia.
+            </div>
           </li>
-          <li class="flex items-start gap-3">
-            <i class="fa fa-lightbulb-o text-roxoClaro text-xl mt-1"></i>
-            <span>Ambiente seguro, respeitoso e cheio de boas energias para todos.</span>
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="fa fa-shield text-brancoFume text-lg"></i>
+            </div>
+            <div>
+              <strong class="text-roxoClaro text-lg">Ambiente Seguro:</strong> Regras claras e moderação ativa para garantir um espaço livre de discriminação, assédio ou qualquer tipo de comportamento negativo.
+            </div>
           </li>
-          <li class="flex items-start gap-3">
-            <i class="fa fa-heart text-azulClaro text-xl mt-1"></i>
-            <span>Construímos conexões reais e amizades que vão além da tela.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <div class="divisor"></div>
-
-  <!-- SEÇÃO: INFORMAÇÕES GERAIS EM CARDS BONITOS -->
-  <section class="max-w-7xl mx-auto px-6 py-16 relative z-10">
-    <h2 class="text-[clamp(2.2rem,5vw,3.2rem)] font-elegant font-bold text-center degrade-texto text-shadow-suave mb-16 animar-entrada delay-100">
-      Informações Gerais
-    </h2>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-      
-      <!-- CARD 1: OBJETIVOS -->
-      <div class="glass rounded-3xl p-8 shadow-xl animar-entrada delay-200 h-full">
-        <div class="w-16 h-16 degrade-principal rounded-2xl flex items-center justify-center mb-6 animar-flutuar">
-          <i class="fa fa-bullseye text-brancoFume text-2xl"></i>
-        </div>
-        <h3 class="text-xl font-elegant font-bold text-brancoFume mb-4">Nossos Objetivos</h3>
-        <ul class="space-y-3 text-brancoFume/85">
-          <li class="flex items-center gap-2"><i class="fa fa-check text-roxoClaro"></i> Criar conteúdo de qualidade e acessível</li>
-          <li class="flex items-center gap-2"><i class="fa fa-check text-roxoClaro"></i> Construir uma comunidade acolhedora</li>
-          <li class="flex items-center gap-2"><i class="fa fa-check text-roxoClaro"></i> Incentivar aprendizado e criatividade</li>
-          <li class="flex items-center gap-2"><i class="fa fa-check text-roxoClaro"></i> Compartilhar experiências e crescer juntos</li>
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="fa fa-heart text-br
