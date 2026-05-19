@@ -12,20 +12,23 @@
       theme: {
         extend: {
           colors: {
-            // CORES AJUSTADAS: Roxo MAIS NÍTIDO e forte, azul equilibrado, branco suave
-            roxoProfundo: '#4B1D57',    // Roxo principal mais vivo
-            roxoIntenso: '#582266',     // Tom mais forte
-            roxoClaro: '#702B80',       // Destaque roxo
-            azulMeiaNoite: '#272757',   // Azul mantido, harmônico
+            roxoProfundo: '#4B1D57',
+            roxoIntenso: '#582266',
+            roxoClaro: '#702B80',
+            roxoSuave: '#9A7CB5',
+            azulMeiaNoite: '#272757',
             azulIntenso: '#303070',
-            brancoFume: '#F5F5F5',      // Branco suave
-            cinzaSuave: '#E0E0EB',      // Tom intermediário para harmonia
-            escuroBase: '#181828',       // Fundo escuro equilibrado
+            azulSuave: '#5A5A95',
+            brancoFume: '#F5F5F5',
+            cinzaSuave: '#E0E0EB',
+            cinzaFundo: '#B8B8D0',
+            escuroBase: '#181828',
             escuroClaro: '#222238'
           },
           fontFamily: {
-            elegant: ['"Montserrat"', 'Arial', 'sans-serif'],
-            sans: ['Inter', 'sans-serif']
+            // FONTES DE ALTA QUALIDADE, NÍTIDAS E PROFISSIONAIS
+            elegant: ['"Montserrat"', '"Segoe UI"', 'Roboto', 'Oxygen', 'Ubuntu', 'sans-serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
           }
         }
       }
@@ -37,28 +40,54 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
-    .text-shadow-suave {
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(75, 29, 87, 0.25);
+    /* TEXTOS COM QUALIDADE MÁXIMA, NÍTIDOS E BEM DEFINIDOS */
+    .texto-titulo {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #FFFFFF 0%, #E8E8FF 30%, #B898D8 60%, #702B80 90%, #582266 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)) 
+             drop-shadow(0 0 12px rgba(88, 34, 102, 0.2));
+      opacity: 0.95;
     }
-    .text-shadow-forte {
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(88, 34, 102, 0.4);
+    .texto-subtitulo {
+      font-weight: 700;
+      color: #D0C8E0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .texto-corpo {
+      font-weight: 400;
+      color: #E8E8F2;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    .texto-destaque {
+      color: #B898D8;
+      font-weight: 600;
     }
 
     .escondido { display: none; }
     .mostrar { display: block !important; }
 
-    /* Efeito vidro com roxo mais nítido */
+    /* Efeito vidro premium */
     .glass {
-      background: rgba(75, 29, 87, 0.18);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1.5px solid rgba(88, 34, 102, 0.35);
+      background: rgba(75, 29, 87, 0.12);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(112, 43, 128, 0.25);
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(39, 39, 87, 0.15);
+      box-shadow: 0 8px 40px rgba(39, 39, 87, 0.1), 
+                  inset 0 0 0 1px rgba(255,255,255,0.05);
+      border-radius: 2rem;
     }
     .glass::before {
       content: '';
@@ -67,61 +96,58 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(245, 245, 245, 0.08), transparent);
-      transition: left 0.8s ease;
+      background: linear-gradient(90deg, transparent, rgba(245, 245, 245, 0.06), transparent);
+      transition: left 1s ease;
     }
     .glass:hover::before { left: 100%; }
     .glass:hover {
-      border-color: rgba(112, 43, 128, 0.55);
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(75, 29, 87, 0.25);
-      background: rgba(75, 29, 87, 0.25);
+      border-color: rgba(184, 152, 216, 0.4);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 
+                  0 0 30px rgba(75, 29, 87, 0.15);
+      background: rgba(75, 29, 87, 0.18);
     }
 
     .glass-light {
-      background: rgba(39, 39, 87, 0.12);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(75, 29, 87, 0.22);
-      transition: all 0.4s ease;
-    }
-    .glass-light:hover {
-      background: rgba(75, 29, 87, 0.2);
-      border-color: rgba(112, 43, 128, 0.4);
+      background: rgba(39, 39, 87, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(75, 29, 87, 0.18);
+      border-radius: 1.5rem;
     }
 
-    /* Degradês com roxo mais forte e harmonia */
-    .degrade-principal {
-      background: linear-gradient(135deg, #582266 0%, #4B1D57 35%, #272757 70%, #303070 100%);
-    }
-    .degrade-texto {
-      background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 25%, #C9A3D6 55%, #702B80 85%, #582266 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
-    }
-    .degrade-botao {
-      background: linear-gradient(135deg, #582266 0%, #4B1D57 50%, #272757 100%);
+    /* Botão Discord estilizado e chamativo */
+    .botao-discord {
+      background: linear-gradient(135deg, #582266 0%, #4B1D57 40%, #272757 100%);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,0.1);
       transition: all 0.4s ease;
-      border: 1px solid rgba(245, 245, 245, 0.15);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      box-shadow: 0 8px 20px rgba(75, 29, 87, 0.2);
     }
-    .degrade-botao:hover {
-      background: linear-gradient(135deg, #702B80 0%, #582266 50%, #303070 100%);
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 10px 25px rgba(75, 29, 87, 0.3), 0 0 15px rgba(39, 39, 87, 0.2);
-      border-color: rgba(245, 245, 245, 0.3);
+    .botao-discord:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(75, 29, 87, 0.3), 
+                  0 0 20px rgba(39, 39, 87, 0.2);
+      background: linear-gradient(135deg, #702B80 0%, #582266 40%, #303070 100%);
+      color: #FFFFFF;
     }
 
     .divisor {
-      width: 200px;
+      width: 220px;
       height: 4px;
       background: linear-gradient(90deg, transparent, #582266, #4B1D57, #272757, transparent);
-      margin: 3rem auto;
-      border-radius: 6px;
+      margin: 4rem auto;
+      border-radius: 8px;
       position: relative;
-      animation: brilho 3.5s infinite;
-      box-shadow: 0 0 12px rgba(75, 29, 87, 0.3);
+      box-shadow: 0 0 15px rgba(75, 29, 87, 0.25);
     }
     .divisor::after {
       content: '';
@@ -129,36 +155,31 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 70px;
+      width: 80px;
       height: 100%;
-      background: #F5F5F5;
-      border-radius: 6px;
-      filter: blur(5px);
-      opacity: 0.8;
+      background: #FFFFFF;
+      border-radius: 8px;
+      filter: blur(6px);
+      opacity: 0.7;
     }
 
-    /* Animações melhoradas */
+    /* Animações */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      from { opacity: 0; transform: translateY(50px) scale(0.96); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
     @keyframes flutuar {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-12px); }
     }
     @keyframes brilho {
-      0%, 100% { box-shadow: 0 0 15px rgba(88, 34, 102, 0.4); }
-      50% { box-shadow: 0 0 28px rgba(39, 39, 87, 0.6); }
-    }
-    @keyframes pulsar {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.06); }
+      0%, 100% { box-shadow: 0 0 18px rgba(88, 34, 102, 0.3); }
+      50% { box-shadow: 0 0 32px rgba(39, 39, 87, 0.5); }
     }
 
-    .animar-entrada { animation: fadeIn 1.3s ease-out forwards; }
-    .animar-flutuar { animation: flutuar 6s ease-in-out infinite; }
+    .animar-entrada { animation: fadeIn 1.4s ease-out forwards; }
+    .animar-flutuar { animation: flutuar 7s ease-in-out infinite; }
     .animar-brilho { animation: brilho 4s infinite; }
-    .animar-pulsar { animation: pulsar 2.5s infinite; }
 
     .delay-100 { animation-delay: 0.1s; }
     .delay-200 { animation-delay: 0.2s; }
@@ -166,85 +187,92 @@
     .delay-400 { animation-delay: 0.4s; }
     .delay-500 { animation-delay: 0.5s; }
     .delay-600 { animation-delay: 0.6s; }
-    .delay-700 { animation-delay: 0.7s; }
-
-    /* Textos maiores e mais detalhados */
-    .texto-detalhado {
-      line-height: 1.8;
-      font-size: 1.05rem;
-      color: #E8E8F2;
-    }
   </style>
 
+  <!-- FONTES DE ALTA QUALIDADE E NITIDEZ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-br from-escuroBase via-roxoProfundo/20 to-azulMeiaNoite/30 min-h-screen font-sans text-brancoFume relative overflow-x-hidden">
+<body class="bg-gradient-to-br from-[#2A2A40] via-[#4B1D57]/25 to-[#272757]/35 min-h-screen font-sans text-brancoFume relative overflow-x-hidden">
 
-  <!-- Fundo decorativo -->
-  <div class="fixed top-0 left-0 w-full h-full opacity-[0.04] pointer-events-none">
+  <!-- Fundo decorativo suave -->
+  <div class="fixed top-0 left-0 w-full h-full opacity-[0.035] pointer-events-none">
     <div class="absolute w-full h-full" style="background-image: radial-gradient(circle, #FFFFFF 1px, transparent 1px); background-size: 50px 50px;"></div>
   </div>
 
-  <!-- CABEÇALHO -->
-  <header class="py-28 px-4 text-center relative z-10 animar-entrada">
-    <div class="max-w-5xl mx-auto">
-      <h1 class="text-[clamp(4.5rem,9vw,7.5rem)] font-elegant font-extrabold degrade-texto text-shadow-forte mb-6 tracking-wider animar-flutuar">
+  <!-- CABEÇALHO PRINCIPAL -->
+  <header class="py-32 px-4 text-center relative z-10 animar-entrada">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-[clamp(4.8rem,10vw,8rem)] font-elegant texto-titulo mb-8 tracking-tight animar-flutuar">
         Flores Vermelhas
       </h1>
-      <p class="text-lg md:text-xl text-brancoFume/90 font-light leading-relaxed max-w-3xl mx-auto">
-        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à <span class="font-semibold text-roxoClaro">KuroCommunity</span>, um espaço criado com amor para compartilhar conhecimento, histórias e construir amizades que vão além da tela.
+      <p class="text-lg md:text-xl texto-corpo max-w-2xl mx-auto">
+        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à <span class="texto-destaque font-bold">KuroCommunity</span>, um espaço criado com amor para compartilhar conhecimento, histórias e construir amizades que vão além da tela.
       </p>
+
+      <!-- BOTÃO DISCORD DESTAQUE -->
+      <div class="mt-12">
+        <a href="https://discord.gg/seu-servidor" target="_blank" class="botao-discord animar-brilho">
+          <i class="fa fa-discord text-2xl"></i>
+          Entrar no Servidor Discord
+        </a>
+      </div>
     </div>
   </header>
 
   <div class="divisor"></div>
 
-  <!-- SEÇÃO: SOBRE O PROJETO (MAIOR E MAIS DETALHADO) -->
+  <!-- SEÇÃO: SOBRE O PROJETO (COMPLETA E DETALHADA) -->
   <section class="max-w-7xl mx-auto px-6 py-20 relative z-10">
-    <h2 class="text-[clamp(2.5rem,5.5vw,3.5rem)] font-elegant font-bold text-center degrade-texto text-shadow-forte mb-20 animar-entrada delay-100">
+    <h2 class="text-[clamp(2.6rem,6vw,3.8rem)] font-elegant texto-titulo text-center mb-20 animar-entrada delay-100">
       Sobre o Projeto
     </h2>
 
     <div class="grid md:grid-cols-2 gap-12 items-stretch">
-      <div class="glass p-12 rounded-[3rem] shadow-2xl animar-entrada delay-200 h-full">
-        <h3 class="text-3xl font-elegant font-semibold text-brancoFume mb-8 border-b-2 border-roxoIntenso/40 pb-4">Nossa História e Propósito</h3>
-        <p class="texto-detalhado mb-6">
-          Tudo começou com uma simples, mas profunda paixão: compartilhar o que sabemos, o que aprendemos e tudo aquilo que realmente amamos. O projeto <strong class="text-roxoClaro">Flores Vermelhas</strong> nasceu da vontade de criar algo único, autêntico e cheio de significado — representado pelas cores que definem nossa identidade: <strong class="text-roxoClaro">roxo-profundo</strong> simboliza sabedoria e criatividade, <strong class="text-azulIntenso">azul-meia-noite</strong> representa confiança e estabilidade, e o <strong class="text-brancoFume">branco-fumê</strong> traz pureza e transparência em tudo o que fazemos.
+      <div class="glass p-14 animar-entrada delay-200 h-full">
+        <h3 class="text-3xl texto-subtitulo mb-8 pb-4 border-b border-roxoIntenso/30">Nossa Essência</h3>
+        <p class="texto-corpo mb-6">
+          O projeto <span class="texto-destaque">Flores Vermelhas</span> surgiu da necessidade de criar algo que realmente representasse quem somos: pessoas apaixonadas por criar, compartilhar e conectar. Mais do que um canal de conteúdo, somos um movimento criativo onde cada detalhe é pensado com carinho, qualidade e transparência.
         </p>
-        <p class="texto-detalhado">
-          Não somos apenas um canal ou um grupo de internet. Somos uma família, um lugar onde todos podem conversar, trocar ideias, ajudar uns aos outros, compartilhar sonhos e crescer juntos. Aqui, cada membro é parte fundamental dessa história, e a sua voz é tão importante quanto a nossa.
+        <p class="texto-corpo">
+          Nossa identidade visual traz o <span class="texto-destaque">Roxo-Profundo</span> (sabedoria e criatividade), o <span class="texto-destaque">Azul-Melhorado</span> (confiança e estabilidade) e o <span class="texto-destaque">Branco-Fumê</span> (pureza e clareza). Tudo isso reflete nossos valores e o ambiente que queremos construir para todos vocês.
         </p>
       </div>
 
-      <div class="glass p-12 rounded-[3rem] shadow-2xl animar-entrada delay-300 h-full">
-        <h3 class="text-3xl font-elegant font-semibold text-brancoFume mb-8 border-b-2 border-azulIntenso/40 pb-4">O Que Desenvolvemos</h3>
-        <ul class="space-y-6 texto-detalhado">
-          <li class="flex items-start gap-4">
-            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-              <i class="fa fa-video-camera text-brancoFume text-lg"></i>
-            </div>
-            <div>
-              <strong class="text-roxoClaro text-lg">Conteúdo Criativo:</strong> Vídeos com tutoriais completos, histórias envolventes, reflexões profundas, bastidores exclusivos e dicas práticas para o dia a dia.
-            </div>
+      <div class="glass p-14 animar-entrada delay-300 h-full">
+        <h3 class="text-3xl texto-subtitulo mb-8 pb-4 border-b border-azulIntenso/30">O Que Oferecemos</h3>
+        <ul class="space-y-4 texto-corpo">
+          <li class="flex items-start gap-3">
+            <i class="fa fa-check-circle text-roxoClaro text-xl mt-1"></i>
+            <span>Conteúdos exclusivos: tutoriais, histórias, análises e bastidores em alta qualidade.</span>
           </li>
-          <li class="flex items-start gap-4">
-            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-              <i class="fa fa-users text-brancoFume text-lg"></i>
-            </div>
-            <div>
-              <strong class="text-azulClaro text-lg">Comunidade Ativa:</strong> Nosso servidor no Discord é o coração do projeto, com eventos semanais, sorteios especiais, canais temáticos e conversas que acontecem 24h por dia.
-            </div>
+          <li class="flex items-start gap-3">
+            <i class="fa fa-check-circle text-roxoClaro text-xl mt-1"></i>
+            <span>Comunidade ativa: Discord com canais temáticos, eventos, lives e conversas diárias.</span>
           </li>
-          <li class="flex items-start gap-4">
-            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-              <i class="fa fa-shield text-brancoFume text-lg"></i>
-            </div>
-            <div>
-              <strong class="text-roxoClaro text-lg">Ambiente Seguro:</strong> Regras claras e moderação ativa para garantir um espaço livre de discriminação, assédio ou qualquer tipo de comportamento negativo.
-            </div>
+          <li class="flex items-start gap-3">
+            <i class="fa fa-check-circle text-roxoClaro text-xl mt-1"></i>
+            <span>Aprendizado colaborativo: espaços para troca de conhecimento, projetos e ideias.</span>
           </li>
-          <li class="flex items-start gap-4">
-            <div class="w-10 h-10 degrade-principal rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-              <i class="fa fa-heart text-br
+          <li class="flex items-start gap-3">
+            <i class="fa fa-check-circle text-roxoClaro text-xl mt-1"></i>
+            <span>Segurança e respeito: moderação atuante e regras claras para um ambiente saudável.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divisor"></div>
+
+  <!-- SEÇÃO: INFORMAÇÕES GERAIS DETALHADAS -->
+  <section class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+    <h2 class="text-[clamp(2.4rem,5.5vw,3.4rem)] font-elegant texto-titulo text-center mb-20 animar-entrada delay-100">
+      Informações Gerais
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+      
+      <!-- Objetivos -->
+      <div class="glass p-10 animar-entr
