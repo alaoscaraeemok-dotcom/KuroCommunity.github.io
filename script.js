@@ -26,13 +26,6 @@ onValue(updatesRef, (snapshot) => {
   });
 });
 
-// Exemplo: Adicionar atualização (você pode usar no painel do Firebase)
-// push(ref(db, 'atualizacoes/'), {
-//   titulo: "Novo vídeo no ar!",
-//   descricao: "Confira o novo vídeo sobre dicas de criação de conteúdo.",
-//   data: Date.now()
-// });
-
 // Estatísticas simuladas - você pode integrar com API real depois
 document.getElementById('youtubeStats').innerHTML = `
   <p><i class="fa fa-users mr-2"></i> Inscritos: <span class="font-semibold">+1.200</span></p>
