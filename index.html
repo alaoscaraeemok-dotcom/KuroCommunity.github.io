@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Canal e Comunidade</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#990000',
+            secondary: '#cc2222',
+            accent: '#ff4444',
+            light: '#fff5f5',
+            dark: '#2b0000'
+          },
+          fontFamily: {
+            elegant: ['Playfair Display', 'serif'],
+            sans: ['Poppins', 'sans-serif']
+          },
+          backgroundImage: {
+            'pattern': "url('https://www.transparenttextures.com/patterns/flowers.png')",
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .border-floral {
+        border-image: linear-gradient(45deg, #990000, #ff4444) 1;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light bg-pattern min-h-screen font-sans text-dark">
+  <!-- Cabeçalho -->
+  <header class="py-16 px-4 text-center relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+      <img src="https://picsum.photos/id/106/1920/400" alt="Flores vermelhas" class="w-full h-full object-cover">
+    </div>
+    <div class="relative z-10">
+      <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-elegant font-bold text-primary text-shadow mb-4">
+        Flores Vermelhas
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl mx-auto text-dark/80">
+        Bem-vindo ao meu espaço! Aqui você encontra todo o conteúdo do meu canal e pode participar da nossa comunidade.
+      </p>
+    </div>
+  </header>
+
+  <!-- Seção Principal -->
+  <main class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8">
+    <!-- Canal YouTube -->
+    <section class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-l-4 border-primary transition-transform hover:-translate-y-2 duration-300">
+      <div class="flex items-center mb-6">
+        <i class="fa fa-youtube-play text-[clamp(2rem,4vw,3rem)] text-accent mr-4"></i>
+        <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Canal do YouTube</h2>
+      </div>
+      <p class="mb-6 text-dark/70">
+        Inscreva-se para acompanhar vídeos novos, tutoriais, lives e todo o conteúdo que preparo com muito carinho para você.
+      </p>
+      <a href="https://youtube.com/seu-canal" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
+        Acessar Canal
+      </a>
+      <div id="youtubeStats" class="mt-6 p-4 bg-light rounded-lg border border-primary/20">
+        <p class="text-sm">Carregando estatísticas...</p>
+      </div>
+    </section>
+
+    <!-- Comunidade Discord -->
+    <section class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-l-4 border-accent transition-transform hover:-translate-y-2 duration-300">
+      <div class="flex items-center mb-6">
+        <i class="fa fa-discord text-[clamp(2rem,4vw,3rem)] text-primary mr-4"></i>
+        <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Comunidade Discord</h2>
+      </div>
+      <p class="mb-6 text-dark/70">
+        Junte-se a nós! Um espaço para conversar, compartilhar ideias, fazer amigos e ficar por dentro de tudo em primeira mão.
+      </p>
+      <a href="https://discord.gg/seu-convite" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
+        Entrar na Comunidade
+      </a>
+      <div id="discordStats" class="mt-6 p-4 bg-light rounded-lg border border-accent/20">
+        <p class="text-sm">Carregando informações...</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Seção de Conteúdo Dinâmico Firebase -->
+  <section class="max-w-4xl mx-auto px-4 py-8 mb-16">
+    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-elegant font-bold text-center text-primary mb-10">
+      Atualizações Recentes
+    </h2>
+    <div id="updatesContainer" class="space-y-4">
+      <p class="text-center text-dark/60">Carregando novidades...</p>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-dark text-light py-8 px-4 text-center">
+    <p class="mb-2">© 2025 - Todos os direitos reservados</p>
+    <p class="text-sm text-light/60">Criado com ❤️ e inspiração em flores vermelhas</p>
+  </footer>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js"></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
