@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Canal e Comunidade</title>
+  <title>KuroCommunity | Flores Vermelhas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script>
@@ -11,10 +11,10 @@
       theme: {
         extend: {
           colors: {
-            primary: '#990000',
-            secondary: '#cc2222',
-            accent: '#ff4444',
-            light: '#fff5f5',
+            primary: '#b80000',
+            secondary: '#d10000',
+            accent: '#ff1a1a',
+            light: '#fff8f8',
             dark: '#2b0000'
           },
           fontFamily: {
@@ -22,7 +22,7 @@
             sans: ['Poppins', 'sans-serif']
           },
           backgroundImage: {
-            'pattern': "url('https://www.transparenttextures.com/patterns/flowers.png')",
+            'petals': "url('https://i.imgur.com/8Z7Q2ZL.png')",
           }
         }
       }
@@ -31,10 +31,12 @@
   <style type="text/tailwindcss">
     @layer utilities {
       .text-shadow {
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 2px 2px 4px rgba(184, 0, 0, 0.2);
       }
-      .border-floral {
-        border-image: linear-gradient(45deg, #990000, #ff4444) 1;
+      .decorative-line {
+        background: url('https://i.imgur.com/5sJ9X7y.png') center/contain no-repeat;
+        height: 80px;
+        margin: 2rem auto;
       }
       .escondido {
         display: none;
@@ -42,34 +44,48 @@
       .mostrar {
         display: block !important;
       }
+      .animate-fall {
+        animation: fall 8s linear infinite;
+      }
+      @keyframes fall {
+        0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+      }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-<body class="bg-light bg-pattern min-h-screen font-sans text-dark">
+<body class="bg-light min-h-screen font-sans text-dark relative overflow-x-hidden">
+  <!-- Animação de Pétalas Caindo -->
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 bg-petals bg-repeat-y opacity-70"></div>
+
+  <!-- Elemento decorativo superior -->
+  <div class="decorative-line w-32 relative z-10"></div>
+
   <!-- Cabeçalho -->
-  <header class="py-16 px-4 text-center relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-      <img src="https://picsum.photos/id/106/1920/400" alt="Flores vermelhas" class="w-full h-full object-cover">
-    </div>
+  <header class="py-12 px-4 text-center relative z-10">
     <div class="relative z-10">
-      <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-elegant font-bold text-primary text-shadow mb-4">
+      <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-elegant font-bold text-primary text-shadow mb-3">
         Flores Vermelhas
       </h1>
-      <p class="text-lg md:text-xl max-w-2xl mx-auto text-dark/80">
-        Bem-vindo ao meu espaço! Aqui você encontra todo o conteúdo do meu canal e pode participar da nossa comunidade.
+      <p class="text-lg md:text-xl max-w-2xl mx-auto text-dark/70">
+        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à KuroCommunity.
       </p>
     </div>
   </header>
 
-  <!-- Seção Sobre Nós -->
-  <section class="max-w-5xl mx-auto px-4 py-10">
+  <!-- Linha decorativa -->
+  <div class="decorative-line w-24"></div>
+
+  <!-- Seção Sobre o Projeto -->
+  <section class="max-w-5xl mx-auto px-4 py-6 relative z-10">
     <h2 class="text-[clamp(1.8rem,3vw,2.2rem)] font-elegant font-bold text-center text-primary mb-8">
       Sobre o Projeto
     </h2>
-    <div class="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg border-l-4 border-primary">
+    <div class="bg-white/60 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-primary/10">
       <p class="mb-4 text-dark/80 leading-relaxed">
         Tudo começou com uma paixão por compartilhar conhecimento, histórias e momentos especiais. O canal é o lugar onde gravo vídeos com muito carinho, sobre os assuntos que mais gosto, sempre com uma pitada de criatividade e originalidade.
       </p>
@@ -80,9 +96,9 @@
   </section>
 
   <!-- Seção Principal -->
-  <main class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-8">
+  <main class="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-10 relative z-10">
     <!-- Canal YouTube -->
-    <section class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-l-4 border-primary transition-transform hover:-translate-y-2 duration-300">
+    <section class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl p-8 border border-primary/10 transition-transform hover:-translate-y-2 duration-300">
       <div class="flex items-center mb-6">
         <i class="fa fa-youtube-play text-[clamp(2rem,4vw,3rem)] text-accent mr-4"></i>
         <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Canal do YouTube</h2>
@@ -95,16 +111,16 @@
         <li>Lives interativas com os inscritos</li>
         <li>Conteúdo exclusivo para quem acompanha de perto</li>
       </ul>
-      <a href="https://youtube.com/seu-canal" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
+      <a href="https://youtube.com/seu-canal" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary/90 hover:bg-primary text-white px-6 py-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-2xl">
         Acessar Canal
       </a>
-      <div id="youtubeStats" class="mt-6 p-4 bg-light rounded-lg border border-primary/20">
+      <div id="youtubeStats" class="mt-6 p-4 bg-light/80 rounded-xl border border-primary/10">
         <p class="text-sm">Carregando estatísticas...</p>
       </div>
     </section>
 
     <!-- Comunidade Discord -->
-    <section class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-l-4 border-accent transition-transform hover:-translate-y-2 duration-300">
+    <section class="bg-white/60 backdrop-blur-md rounded-3xl shadow-xl p-8 border border-primary/10 transition-transform hover:-translate-y-2 duration-300">
       <div class="flex items-center mb-6">
         <i class="fa fa-discord text-[clamp(2rem,4vw,3rem)] text-primary mr-4"></i>
         <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Comunidade Discord</h2>
@@ -117,41 +133,44 @@
         <li>Eventos e sorteios exclusivos</li>
         <li>Contato direto comigo e com outros membros</li>
       </ul>
-      <a href="https://discord.gg/D32rR9C2NQ" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
+      <a href="https://discord.gg/D32rR9C2NQ" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent/90 hover:bg-accent text-white px-6 py-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-2xl">
         Entrar na Comunidade
       </a>
-      <div id="discordStats" class="mt-6 p-4 bg-light rounded-lg border border-accent/20">
+      <div id="discordStats" class="mt-6 p-4 bg-light/80 rounded-xl border border-primary/10">
         <p class="text-sm">Carregando informações...</p>
       </div>
     </section>
   </main>
 
+  <!-- Linha decorativa -->
+  <div class="decorative-line w-24"></div>
+
   <!-- Seção de Curiosidades Ocultas -->
-  <section class="max-w-4xl mx-auto px-4 py-8 mb-16 text-center">
-    <button id="botaoCuriosidades" class="bg-dark/80 hover:bg-dark text-light px-8 py-3 rounded-lg font-medium transition-colors shadow-lg mb-6">
+  <section class="max-w-4xl mx-auto px-4 py-8 mb-16 text-center relative z-10">
+    <button id="botaoCuriosidades" class="bg-primary/90 hover:bg-primary text-light px-8 py-3 rounded-xl font-medium transition-all shadow-lg mb-6">
       🕵️‍♂️ Ver Curiosidades Ocultas
     </button>
 
-    <div id="caixaCuriosidades" class="escondido bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-2 border-primary/30">
+    <div id="caixaCuriosidades" class="escondido bg-white/60 backdrop-blur-md rounded-3xl shadow-xl p-8 border border-primary/20">
       <h3 class="text-2xl font-elegant font-semibold text-primary mb-6">Segredos e Curiosidades 🌹</h3>
       
       <div class="grid md:grid-cols-2 gap-6 text-left">
-        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
           <p class="font-semibold text-primary">💡 Por que "Flores Vermelhas"?</p>
           <p class="text-dark/70 mt-1">Escolhi esse nome porque as flores vermelhas representam paixão, amor e intensidade — tudo o que coloco em cada vídeo e interação com vocês.</p>
         </div>
 
-        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
           <p class="font-semibold text-primary">🎯 O primeiro vídeo</p>
           <p class="text-dark/70 mt-1">O primeiro vídeo foi gravado sem nenhuma preparação, só com a vontade de compartilhar algo legal. Hoje ele é um dos meus favoritos!</p>
         </div>
 
-        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
           <p class="font-semibold text-primary">✨ O símbolo secreto</p>
           <p class="text-dark/70 mt-1">Sempre coloco uma flor vermelha escondida em cada vídeo ou arte. Quem encontrar pode ganhar um cargo especial na comunidade 😏</p>
         </div>
 
-        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+        <div class="p-4 bg-light/70 rounded-xl border-l-2 border-accent/50">
           <p class="font-semibold text-primary">🤝 Nossa maior conquista</p>
           <p class="text-dark/70 mt-1">Mais do que números, ver pessoas se tornando amigas e criando projetos juntos dentro da comunidade é o meu maior orgulho.</p>
         </div>
@@ -160,7 +179,7 @@
   </section>
 
   <!-- Seção de Conteúdo Dinâmico Firebase -->
-  <section class="max-w-4xl mx-auto px-4 py-8 mb-16">
+  <section class="max-w-4xl mx-auto px-4 py-8 mb-16 relative z-10">
     <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-elegant font-bold text-center text-primary mb-10">
       Atualizações Recentes
     </h2>
@@ -170,9 +189,9 @@
   </section>
 
   <!-- Rodapé -->
-  <footer class="bg-dark text-light py-8 px-4 text-center">
-    <p class="mb-2">© 2025 - Todos os direitos reservados | Flores Vermelhas</p>
-    <p class="text-sm text-light/60">Criado com ❤️ e inspiração em paixão e beleza</p>
+  <footer class="bg-primary/90 text-light py-8 px-4 text-center relative z-10">
+    <p class="mb-2">© 2025 - Todos os direitos reservados | KuroCommunity</p>
+    <p class="text-sm text-light/70">Criado com ❤️ e inspiração em paixão e beleza</p>
   </footer>
 
   <!-- Firebase Scripts -->
