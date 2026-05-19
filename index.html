@@ -12,16 +12,17 @@
       theme: {
         extend: {
           colors: {
-            primary: '#B00000',     // Vermelho escuro forte
-            secondary: '#FF1A1A',   // Vermelho vivo
-            accent: '#FF5555',      // Vermelho claro
-            dark: '#000000',        // Preto absoluto
-            darkLight: '#080808',   // Preto suave
-            medium: '#120202',      // Fundo escuro avermelhado
-            light: '#FFEEEE'        // Cor do texto
+            // CORES NOVAS CONFORME VOCÊ PEDIU
+            primary: '#6D214F',    // Vermelho vinho
+            secondary: '#80285E',  // Tom mais claro do vinho
+            accent: '#993070',     // Destaque vinho
+            dark: '#1A1A1A',       // Fundo escuro
+            darkLight: '#2C2C2C',  // Cinza grafite
+            medium: '#383838',     // Cinza médio
+            light: '#F2E6ED'       // Cor de texto clara (contraste)
           },
           fontFamily: {
-            // NOVA FONTE: limpa, moderna, forte e sem exagero
+            // Fonte limpa e forte que você aprovou
             elegant: ['"Montserrat"', 'Arial', 'sans-serif'],
             sans: ['Inter', 'sans-serif']
           }
@@ -31,9 +32,9 @@
   </script>
 
   <style>
-    /* Brilho LEVE só para destacar, sem exagero */
+    /* Sombra leve só para destacar, sem exagero */
     .text-shadow-glow {
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 8px rgba(176, 0, 0, 0.4);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(109, 33, 79, 0.3);
     }
     .escondido { 
       display: none; 
@@ -42,32 +43,32 @@
       display: block !important; 
     }
     .glass {
-      background: rgba(8, 8, 8, 0.75);
+      background: rgba(44, 44, 44, 0.75); /* Cinza grafite com transparência */
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(176, 0, 0, 0.25);
+      border: 1px solid rgba(109, 33, 79, 0.25); /* Borda vinho */
       transition: all 0.4s ease;
     }
     .glass:hover {
-      border-color: rgba(255, 26, 26, 0.4);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(176, 0, 0, 0.1);
+      border-color: rgba(109, 33, 79, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(109, 33, 79, 0.1);
     }
     .glass-light {
-      background: rgba(15, 5, 5, 0.5);
+      background: rgba(56, 56, 56, 0.5); /* Cinza médio translúcido */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(176, 0, 0, 0.18);
+      border: 1px solid rgba(109, 33, 79, 0.18);
       transition: all 0.3s ease;
     }
     .glass-light:hover {
-      background: rgba(25, 8, 8, 0.55);
+      background: rgba(64, 64, 64, 0.55);
     }
     .hover-lift {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .hover-lift:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 26, 26, 0.15);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(109, 33, 79, 0.15);
     }
     .animate-fade-in {
       animation: fadeIn 1.2s ease-out forwards;
@@ -78,9 +79,9 @@
     .delay-400 { animation-delay: 0.4s; }
     .delay-500 { animation-delay: 0.5s; }
     
-    /* Degradê bonito, forte e sem brilho exagerado */
+    /* DEGRADÊ COM AS CORES NOVAS: Cinza grafite + Vermelho vinho */
     .text-gradient {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFEEEE 20%, #FF2222 50%, #B00000 100%);
+      background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 25%, #6D214F 60%, #551A3F 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -90,7 +91,7 @@
     .divisor {
       width: 150px;
       height: 3px;
-      background: linear-gradient(90deg, transparent, #B00000, #FF1A1A, transparent);
+      background: linear-gradient(90deg, transparent, #2C2C2C, #6D214F, transparent);
       margin: 2.5rem auto;
       border-radius: 2px;
     }
@@ -100,27 +101,27 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .botao-gradient {
-      background: linear-gradient(135deg, #B00000 0%, #FF1A1A 50%, #FF4444 100%);
+      background: linear-gradient(135deg, #2C2C2C 0%, #6D214F 100%);
       transition: all 0.3s ease;
       font-weight: 600;
     }
     .botao-gradient:hover {
-      background: linear-gradient(135deg, #800000 0%, #B00000 50%, #FF1A1A 100%);
+      background: linear-gradient(135deg, #1A1A1A 0%, #551A3F 100%);
       transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255, 26, 26, 0.3);
+      box-shadow: 0 0 15px rgba(109, 33, 79, 0.3);
     }
   </style>
 
-  <!-- FONTE NOVA: Montserrat -> Limpa, forte, moderna -->
+  <!-- Fonte Montserrat que você gostou -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-dark via-darkLight to-medium min-h-screen font-sans text-light relative overflow-x-hidden">
 
-  <!-- Elemento decorativo de fundo (que você gostou) -->
+  <!-- Elemento decorativo de fundo (que você curtiu) agora com cor vinho -->
   <div class="fixed top-0 left-0 w-full h-full opacity-4 pointer-events-none">
-    <div class="absolute w-full h-full" style="background-image: radial-gradient(circle, #FF1A1A 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute w-full h-full" style="background-image: radial-gradient(circle, #6D214F 1px, transparent 1px); background-size: 40px 40px;"></div>
   </div>
 
   <!-- Cabeçalho -->
@@ -144,7 +145,7 @@
     </h2>
     <div class="glass p-12 rounded-[2.5rem] shadow-2xl animate-fade-in delay-100">
       <p class="mb-6 text-light/90 leading-relaxed text-lg">
-        Tudo começou com uma simples paixão: compartilhar o que sabemos, o que aprendemos e o que amamos. O projeto <strong class="text-accent">"Flores Vermelhas"</strong> nasceu da vontade de criar algo único, autêntico e cheio de significado — assim como as flores vermelhas, que simbolizam amor, coragem, força e intensidade.
+        Tudo começou com uma simples paixão: compartilhar o que sabemos, o que aprendemos e o que amamos. O projeto <strong class="text-accent">"Flores Vermelhas"</strong> nasceu da vontade de criar algo único, autêntico e cheio de significado — assim como as cores que representam nossa identidade: força, elegância e intensidade.
       </p>
       <p class="mb-6 text-light/90 leading-relaxed text-lg">
         Nosso canal é o lugar onde gravo vídeos com muito carinho, dedicação e criatividade. Aqui você encontra conteúdos variados, tutoriais, histórias, reflexões, bastidores e tudo aquilo que faz parte do meu universo e que pode agregar valor, entretenimento ou conhecimento para você.
@@ -231,7 +232,4 @@
     <!-- Canal YouTube -->
     <section class="glass p-10 rounded-[2rem] shadow-2xl hover-lift animate-fade-in delay-200">
       <div class="flex items-center mb-8">
-        <i class="fa fa-youtube-play text-[clamp(2.5rem,5vw,3.5rem)] text-accent mr-5"></i>
-        <h2 class="text-[clamp(1.8rem,3.5vw,2.4rem)] font-elegant font-bold text-gradient text-shadow-glow">Canal do YouTube</h2>
-      </div>
-      <p class="mb-5 text-light/8
+        <i class="fa fa-youtube-play text-[clamp(2.5rem,5vw,3
