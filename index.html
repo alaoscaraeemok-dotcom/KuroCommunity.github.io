@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KuroCommunity</title>
+  <title>Meu Canal e Comunidade</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script>
@@ -36,6 +36,12 @@
       .border-floral {
         border-image: linear-gradient(45deg, #990000, #ff4444) 1;
       }
+      .escondido {
+        display: none;
+      }
+      .mostrar {
+        display: block !important;
+      }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +56,7 @@
     </div>
     <div class="relative z-10">
       <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-elegant font-bold text-primary text-shadow mb-4">
-        Lost Engine
+        Flores Vermelhas
       </h1>
       <p class="text-lg md:text-xl max-w-2xl mx-auto text-dark/80">
         Bem-vindo ao meu espaço! Aqui você encontra todo o conteúdo do meu canal e pode participar da nossa comunidade.
@@ -58,17 +64,37 @@
     </div>
   </header>
 
+  <!-- Seção Sobre Nós -->
+  <section class="max-w-5xl mx-auto px-4 py-10">
+    <h2 class="text-[clamp(1.8rem,3vw,2.2rem)] font-elegant font-bold text-center text-primary mb-8">
+      Sobre o Projeto
+    </h2>
+    <div class="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg border-l-4 border-primary">
+      <p class="mb-4 text-dark/80 leading-relaxed">
+        Tudo começou com uma paixão por compartilhar conhecimento, histórias e momentos especiais. O canal é o lugar onde gravo vídeos com muito carinho, sobre os assuntos que mais gosto, sempre com uma pitada de criatividade e originalidade.
+      </p>
+      <p class="text-dark/80 leading-relaxed">
+        A comunidade foi criada para reunir pessoas que têm os mesmos interesses, onde todos podem conversar, trocar ideias, fazer amizades e crescer juntos. Aqui, cada membro é parte fundamental dessa história.
+      </p>
+    </div>
+  </section>
+
   <!-- Seção Principal -->
-  <main class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8">
+  <main class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-8">
     <!-- Canal YouTube -->
     <section class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-l-4 border-primary transition-transform hover:-translate-y-2 duration-300">
       <div class="flex items-center mb-6">
         <i class="fa fa-youtube-play text-[clamp(2rem,4vw,3rem)] text-accent mr-4"></i>
         <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Canal do YouTube</h2>
       </div>
-      <p class="mb-6 text-dark/70">
-        Inscreva-se para acompanhar vídeos novos, tutoriais, lives e todo o conteúdo que preparo com muito carinho para você.
+      <p class="mb-4 text-dark/70">
+        Inscreva-se para acompanhar vídeos novos, tutoriais, lives e todo o conteúdo que preparo com muito carinho para você. Sempre trago temas variados, dicas exclusivas e momentos divertidos.
       </p>
+      <ul class="list-disc list-inside mb-6 text-dark/70 space-y-1">
+        <li>Vídeos novos toda semana</li>
+        <li>Lives interativas com os inscritos</li>
+        <li>Conteúdo exclusivo para quem acompanha de perto</li>
+      </ul>
       <a href="https://youtube.com/seu-canal" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
         Acessar Canal
       </a>
@@ -77,15 +103,20 @@
       </div>
     </section>
 
-    <!-- Comunidade Discord - LINK ATUALIZADO AQUI -->
+    <!-- Comunidade Discord -->
     <section class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-l-4 border-accent transition-transform hover:-translate-y-2 duration-300">
       <div class="flex items-center mb-6">
         <i class="fa fa-discord text-[clamp(2rem,4vw,3rem)] text-primary mr-4"></i>
         <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-elegant font-semibold text-primary">Comunidade Discord</h2>
       </div>
-      <p class="mb-6 text-dark/70">
-        Junte-se a nós! Um espaço para conversar, compartilhar ideias, fazer amigos e ficar por dentro de tudo em primeira mão.
+      <p class="mb-4 text-dark/70">
+        Junte-se a nós! Um espaço seguro e amigável para conversar, compartilhar ideias, fazer amigos e ficar por dentro de tudo em primeira mão. É o coração do nosso projeto.
       </p>
+      <ul class="list-disc list-inside mb-6 text-dark/70 space-y-1">
+        <li>Canais para todos os assuntos</li>
+        <li>Eventos e sorteios exclusivos</li>
+        <li>Contato direto comigo e com outros membros</li>
+      </ul>
       <a href="https://discord.gg/D32rR9C2NQ" target="_blank" rel="noopener noreferrer" class="inline-block bg-accent hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
         Entrar na Comunidade
       </a>
@@ -94,6 +125,39 @@
       </div>
     </section>
   </main>
+
+  <!-- Seção de Curiosidades Ocultas -->
+  <section class="max-w-4xl mx-auto px-4 py-8 mb-16 text-center">
+    <button id="botaoCuriosidades" class="bg-dark/80 hover:bg-dark text-light px-8 py-3 rounded-lg font-medium transition-colors shadow-lg mb-6">
+      🕵️‍♂️ Ver Curiosidades Ocultas
+    </button>
+
+    <div id="caixaCuriosidades" class="escondido bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-2 border-primary/30">
+      <h3 class="text-2xl font-elegant font-semibold text-primary mb-6">Segredos e Curiosidades 🌹</h3>
+      
+      <div class="grid md:grid-cols-2 gap-6 text-left">
+        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+          <p class="font-semibold text-primary">💡 Por que "Flores Vermelhas"?</p>
+          <p class="text-dark/70 mt-1">Escolhi esse nome porque as flores vermelhas representam paixão, amor e intensidade — tudo o que coloco em cada vídeo e interação com vocês.</p>
+        </div>
+
+        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+          <p class="font-semibold text-primary">🎯 O primeiro vídeo</p>
+          <p class="text-dark/70 mt-1">O primeiro vídeo foi gravado sem nenhuma preparação, só com a vontade de compartilhar algo legal. Hoje ele é um dos meus favoritos!</p>
+        </div>
+
+        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+          <p class="font-semibold text-primary">✨ O símbolo secreto</p>
+          <p class="text-dark/70 mt-1">Sempre coloco uma flor vermelha escondida em cada vídeo ou arte. Quem encontrar pode ganhar um cargo especial na comunidade 😏</p>
+        </div>
+
+        <div class="p-4 bg-light/70 rounded-lg border-l-2 border-accent">
+          <p class="font-semibold text-primary">🤝 Nossa maior conquista</p>
+          <p class="text-dark/70 mt-1">Mais do que números, ver pessoas se tornando amigas e criando projetos juntos dentro da comunidade é o meu maior orgulho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Seção de Conteúdo Dinâmico Firebase -->
   <section class="max-w-4xl mx-auto px-4 py-8 mb-16">
@@ -107,8 +171,8 @@
 
   <!-- Rodapé -->
   <footer class="bg-dark text-light py-8 px-4 text-center">
-    <p class="mb-2">© 2025 - Todos os direitos reservados</p>
-    <p class="text-sm text-light/60">Criado com ❤️ e inspiração em flores vermelhas</p>
+    <p class="mb-2">© 2025 - Todos os direitos reservados | Flores Vermelhas</p>
+    <p class="text-sm text-light/60">Criado com ❤️ e inspiração em paixão e beleza</p>
   </footer>
 
   <!-- Firebase Scripts -->
@@ -116,5 +180,18 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js"></script>
   <script type="module" src="firebase-config.js"></script>
   <script type="module" src="script.js"></script>
+
+  <!-- Script para mostrar/esconder curiosidades -->
+  <script>
+    const botao = document.getElementById('botaoCuriosidades');
+    const caixa = document.getElementById('caixaCuriosidades');
+
+    botao.addEventListener('click', () => {
+      caixa.classList.toggle('mostrar');
+      botao.textContent = caixa.classList.contains('mostrar') 
+        ? '🙈 Ocultar Curiosidades' 
+        : '🕵️‍♂️ Ver Curiosidades Ocultas';
+    });
+  </script>
 </body>
 </html>
