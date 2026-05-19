@@ -6,6 +6,7 @@
   <title>KuroCommunity | Flores Vermelhas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
   <script>
     tailwind.config = {
       theme: {
@@ -27,95 +28,194 @@
       }
     }
   </script>
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .text-shadow-glow {
-        text-shadow: 0 0 12px rgba(153, 0, 0, 0.6), 0 0 24px rgba(153, 0, 0, 0.3);
-      }
-      .escondido { 
-        display: none; 
-      }
-      .mostrar { 
-        display: block !important; 
-      }
-      .glass {
-        background: rgba(30, 10, 10, 0.65);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(153, 0, 0, 0.2);
-      }
-      .glass-light {
-        background: rgba(60, 15, 15, 0.4);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(200, 0, 0, 0.15);
-      }
-      .hover-lift {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .hover-lift:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(153, 0, 0, 0.25);
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      .animate-fade-in {
-        animation: fadeIn 1.2s ease-out forwards;
-      }
-      .delay-100 { animation-delay: 0.1s; }
-      .delay-200 { animation-delay: 0.2s; }
-      .delay-300 { animation-delay: 0.3s; }
-      .delay-400 { animation-delay: 0.4s; }
-      .text-gradient {
-        background: linear-gradient(90deg, #ff4444, #990000);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
+
+  <style>
+    /* Estilos personalizados funcionando 100% */
+    .text-shadow-glow {
+      text-shadow: 0 0 12px rgba(153, 0, 0, 0.6), 0 0 24px rgba(153, 0, 0, 0.3);
+    }
+    .escondido { 
+      display: none; 
+    }
+    .mostrar { 
+      display: block !important; 
+    }
+    .glass {
+      background: rgba(30, 10, 10, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(153, 0, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+    .glass:hover {
+      border-color: rgba(255, 34, 34, 0.3);
+      box-shadow: 0 8px 32px rgba(153, 0, 0, 0.15);
+    }
+    .glass-light {
+      background: rgba(60, 15, 15, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(200, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    .glass-light:hover {
+      background: rgba(80, 20, 20, 0.45);
+    }
+    .hover-lift {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hover-lift:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(153, 0, 0, 0.25);
+    }
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .text-gradient {
+      background: linear-gradient(90deg, #ff4444, #990000);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .divisor {
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #990000, transparent);
+      margin: 2rem auto;
+      border-radius: 2px;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px rgba(153, 0, 0, 0.2); }
+      50% { box-shadow: 0 0 25px rgba(153, 0, 0, 0.4); }
+    }
+    .pulse-glow {
+      animation: pulse-glow 3s infinite;
+    }
   </style>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-dark via-darkLight to-medium min-h-screen font-sans text-light relative overflow-x-hidden">
 
+  <!-- Elemento decorativo de fundo -->
+  <div class="fixed top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+    <div class="absolute w-full h-full" style="background-image: radial-gradient(circle, #990000 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </div>
+
   <!-- Cabeçalho -->
-  <header class="py-16 px-4 text-center relative z-10 animate-fade-in">
+  <header class="py-20 px-4 text-center relative z-10 animate-fade-in">
     <div class="relative z-10">
-      <h1 class="text-[clamp(3rem,6vw,5rem)] font-elegant font-extrabold text-gradient text-shadow-glow mb-4 tracking-wider">
+      <h1 class="text-[clamp(3.5rem,7vw,6rem)] font-elegant font-extrabold text-gradient text-shadow-glow mb-6 tracking-wider">
         Flores Vermelhas
       </h1>
-      <p class="text-lg md:text-xl max-w-2xl mx-auto text-light/80 font-light">
-        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à <span class="font-semibold text-accent">KuroCommunity</span>.
+      <p class="text-lg md:text-xl max-w-3xl mx-auto text-light/80 font-light leading-relaxed">
+        Paixão, intensidade e beleza em cada detalhe. Bem-vindo à <span class="font-semibold text-accent">KuroCommunity</span>, um espaço criado com amor para compartilhar conhecimento, histórias e construir amizades duradouras.
       </p>
     </div>
   </header>
 
+  <div class="divisor"></div>
+
   <!-- Seção Sobre o Projeto -->
-  <section class="max-w-5xl mx-auto px-4 py-8 relative z-10">
-    <h2 class="text-[clamp(2rem,4vw,2.8rem)] font-elegant font-bold text-center text-gradient text-shadow-glow mb-10 animate-fade-in">
+  <section class="max-w-5xl mx-auto px-4 py-10 relative z-10">
+    <h2 class="text-[clamp(2rem,4vw,3rem)] font-elegant font-bold text-center text-gradient text-shadow-glow mb-10 animate-fade-in">
       Sobre o Projeto
     </h2>
-    <div class="glass p-10 rounded-[2rem] shadow-2xl animate-fade-in delay-100 hover:shadow-[0_0_30px_rgba(153,0,0,0.2)] transition-shadow duration-500">
+    <div class="glass p-12 rounded-[2.5rem] shadow-2xl animate-fade-in delay-100">
       <p class="mb-6 text-light/90 leading-relaxed text-lg">
-        Tudo começou com uma paixão por compartilhar conhecimento, histórias e momentos especiais. O canal é o lugar onde gravo vídeos com muito carinho, sobre os assuntos que mais gosto, sempre com uma pitada de criatividade e originalidade.
+        Tudo começou com uma simples paixão: compartilhar o que sabemos, o que aprendemos e o que amamos. O projeto <strong class="text-accent">"Flores Vermelhas"</strong> nasceu da vontade de criar algo único, autêntico e cheio de significado — assim como as flores vermelhas, que simbolizam amor, coragem, força e intensidade.
+      </p>
+      <p class="mb-6 text-light/90 leading-relaxed text-lg">
+        Nosso canal é o lugar onde gravo vídeos com muito carinho, dedicação e criatividade. Aqui você encontra conteúdos variados, tutoriais, histórias, reflexões, bastidores e tudo aquilo que faz parte do meu universo e que pode agregar valor, entretenimento ou conhecimento para você.
       </p>
       <p class="text-light/90 leading-relaxed text-lg">
-        A comunidade foi criada para reunir pessoas que têm os mesmos interesses, onde todos podem conversar, trocar ideias, fazer amizades e crescer juntos. Aqui, cada membro é parte fundamental dessa história.
+        A comunidade foi criada para reunir pessoas que têm os mesmos interesses, valores e energia. Não é apenas um grupo, é uma família digital onde todos podem conversar, trocar ideias, ajudar uns aos outros, fazer amizades e crescer juntos. Aqui, cada membro é parte fundamental dessa história e tem voz ativa.
       </p>
     </div>
   </section>
+
+  <!-- Seção de Informações Gerais -->
+  <section class="max-w-6xl mx-auto px-4 py-10 relative z-10">
+    <h2 class="text-[clamp(2rem,4vw,2.8rem)] font-elegant font-bold text-center text-gradient text-shadow-glow mb-12 animate-fade-in delay-100">
+      Informações Gerais
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      
+      <!-- Objetivos -->
+      <div class="glass p-8 rounded-2xl hover-lift animate-fade-in delay-200">
+        <div class="text-center mb-4">
+          <i class="fa fa-bullseye text-4xl text-accent drop-shadow-[0_0_8px_rgba(255,34,34,0.4)]"></i>
+        </div>
+        <h3 class="text-xl font-elegant font-bold text-center text-gradient mb-4">Nossos Objetivos</h3>
+        <ul class="space-y-2 text-light/80">
+          <li class="flex items-start gap-2"><i class="fa fa-check-circle text-accent mt-1"></i> Criar conteúdo de qualidade, honesto e acessível</li>
+          <li class="flex items-start gap-2"><i class="fa fa-check-circle text-accent mt-1"></i> Construir uma comunidade segura, respeitosa e acolhedora</li>
+          <li class="flex items-start gap-2"><i class="fa fa-check-circle text-accent mt-1"></i> Incentivar o aprendizado e a criatividade</li>
+          <li class="flex items-start gap-2"><i class="fa fa-check-circle text-accent mt-1"></i> Compartilhar experiências e crescer em conjunto</li>
+        </ul>
+      </div>
+
+      <!-- Valores -->
+      <div class="glass p-8 rounded-2xl hover-lift animate-fade-in delay-300">
+        <div class="text-center mb-4">
+          <i class="fa fa-heart text-4xl text-accent drop-shadow-[0_0_8px_rgba(255,34,34,0.4)]"></i>
+        </div>
+        <h3 class="text-xl font-elegant font-bold text-center text-gradient mb-4">Nossos Valores</h3>
+        <ul class="space-y-2 text-light/80">
+          <li class="flex items-start gap-2"><i class="fa fa-diamond text-accent mt-1"></i> Respeito acima de tudo</li>
+          <li class="flex items-start gap-2"><i class="fa fa-diamond text-accent mt-1"></i> Autenticidade e transparência</li>
+          <li class="flex items-start gap-2"><i class="fa fa-diamond text-accent mt-1"></i> Solidariedade e ajuda mútua</li>
+          <li class="flex items-start gap-2"><i class="fa fa-diamond text-accent mt-1"></i> Paixão e dedicação em tudo o que fazemos</li>
+        </ul>
+      </div>
+
+      <!-- O Que Oferecemos -->
+      <div class="glass p-8 rounded-2xl hover-lift animate-fade-in delay-400">
+        <div class="text-center mb-4">
+          <i class="fa fa-gift text-4xl text-accent drop-shadow-[0_0_8px_rgba(255,34,34,0.4)]"></i>
+        </div>
+        <h3 class="text-xl font-elegant font-bold text-center text-gradient mb-4">O Que Oferecemos</h3>
+        <ul class="space-y-2 text-light/80">
+          <li class="flex items-start gap-2"><i class="fa fa-star text-accent mt-1"></i> Conteúdo exclusivo e antecipado</li>
+          <li class="flex items-start gap-2"><i class="fa fa-star text-accent mt-1"></i> Eventos, lives e sorteios especiais</li>
+          <li class="flex items-start gap-2"><i class="fa fa-star text-accent mt-1"></i> Espaço para troca de ideias e projetos</li>
+          <li class="flex items-start gap-2"><i class="fa fa-star text-accent mt-1"></i> Amizades verdadeiras e conexões reais</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Mais Detalhes Gerais -->
+    <div class="glass p-10 rounded-[2rem] animate-fade-in delay-500">
+      <h3 class="text-2xl font-elegant font-bold text-gradient mb-6 text-center">Detalhes Importantes</h3>
+      <div class="grid md:grid-cols-2 gap-8 text-light/85">
+        <div>
+          <p class="mb-4"><strong class="text-accent">📅 Frequência de postagens:</strong> Novos vídeos toda terça e sexta-feira, com lives marcadas mensalmente e conteúdos extras nos finais de semana.</p>
+          <p class="mb-4"><strong class="text-accent">🌐 Plataformas:</strong> Estamos presentes no YouTube, Discord e redes sociais, sempre integrando todo o conteúdo para você não perder nada.</p>
+          <p><strong class="text-accent">👥 Quem pode participar:</strong> Todos são bem-vindos! Desde que respeitem as regras da comunidade e tragam boas energias, independentemente de idade, localização ou conhecimento prévio.</p>
+        </div>
+        <div>
+          <p class="mb-4"><strong class="text-accent">📌 Temas abordados:</strong> Variedade é nossa marca! Falamos de tecnologia, arte, desenvolvimento pessoal, histórias, jogos, dicas práticas, reflexões e muito mais — sempre com uma abordagem leve e interessante.</p>
+          <p><strong class="text-accent">🔒 Segurança e moderação:</strong> Contamos com uma equipe de moderação ativa para garantir que o ambiente seja sempre seguro, livre de assédio, discriminação ou qualquer tipo de comportamento inadequado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divisor"></div>
 
   <!-- Seção Principal -->
   <main class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-12 relative z-10">
@@ -131,105 +231,4 @@
       <ul class="list-disc list-inside mb-8 text-light/80 space-y-2 text-base">
         <li>Vídeos novos toda semana</li>
         <li>Lives interativas com os inscritos</li>
-        <li>Conteúdo exclusivo para quem acompanha de perto</li>
-      </ul>
-      <a href="https://youtube.com/seu-canal" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-light px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(153,0,0,0.4)] transform hover:scale-[1.03] active:scale-[0.98]">
-        Acessar Canal
-      </a>
-      <div id="youtubeStats" class="mt-8 p-5 glass-light rounded-xl border border-primary/10">
-        <p class="text-light/70">Carregando estatísticas...</p>
-      </div>
-    </section>
-
-    <!-- Comunidade Discord -->
-    <section class="glass p-10 rounded-[2rem] shadow-2xl hover-lift animate-fade-in delay-300">
-      <div class="flex items-center mb-8">
-        <i class="fa fa-discord text-[clamp(2.5rem,5vw,3.5rem)] text-primary mr-5 drop-shadow-[0_0_8px_rgba(153,0,0,0.5)]"></i>
-        <h2 class="text-[clamp(1.8rem,3.5vw,2.4rem)] font-elegant font-bold text-gradient text-shadow-glow">Comunidade Discord</h2>
-      </div>
-      <p class="mb-5 text-light/85 text-lg">
-        Junte-se a nós! Um espaço seguro e amigável para conversar, compartilhar ideias, fazer amigos e ficar por dentro de tudo em primeira mão. É o coração do nosso projeto.
-      </p>
-      <ul class="list-disc list-inside mb-8 text-light/80 space-y-2 text-base">
-        <li>Canais para todos os assuntos</li>
-        <li>Eventos e sorteios exclusivos</li>
-        <li>Contato direto comigo e com outros membros</li>
-      </ul>
-      <a href="https://discord.gg/D32rR9C2NQ" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-secondary to-accent hover:from-accent hover:to-secondary text-light px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(200,0,0,0.4)] transform hover:scale-[1.03] active:scale-[0.98]">
-        Entrar na Comunidade
-      </a>
-      <div id="discordStats" class="mt-8 p-5 glass-light rounded-xl border border-primary/10">
-        <p class="text-light/70">Carregando informações...</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Seção de Curiosidades Ocultas -->
-  <section class="max-w-4xl mx-auto px-4 py-10 mb-20 text-center relative z-10 animate-fade-in delay-400">
-    <button id="botaoCuriosidades" class="bg-gradient-to-r from-darkLight to-medium hover:from-medium hover:to-darkLight border border-primary/30 text-gradient px-10 py-4 rounded-xl font-elegant font-semibold transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(153,0,0,0.3)] text-lg cursor-pointer">
-      🕵️‍♂️ Revelar Segredos Ocultos
-    </button>
-
-    <div id="caixaCuriosidades" class="escondido glass mt-10 p-10 rounded-[2rem] shadow-2xl border border-accent/20">
-      <h3 class="text-3xl font-elegant font-bold text-gradient text-shadow-glow mb-8">Segredos & Curiosidades 🌹</h3>
-      
-      <div class="grid md:grid-cols-2 gap-8 text-left">
-        <div class="p-5 glass-light rounded-xl border-l-4 border-accent/50 hover:border-accent transition-colors duration-300">
-          <p class="font-semibold text-accent text-lg mb-2">💡 Por que "Flores Vermelhas"?</p>
-          <p class="text-light/80">Escolhi esse nome porque as flores vermelhas representam paixão, amor e intensidade — tudo o que coloco em cada vídeo e interação com vocês.</p>
-        </div>
-
-        <div class="p-5 glass-light rounded-xl border-l-4 border-accent/50 hover:border-accent transition-colors duration-300">
-          <p class="font-semibold text-accent text-lg mb-2">🎯 O primeiro vídeo</p>
-          <p class="text-light/80">O primeiro vídeo foi gravado sem nenhuma preparação, só com a vontade de compartilhar algo legal. Hoje ele é um dos meus favoritos!</p>
-        </div>
-
-        <div class="p-5 glass-light rounded-xl border-l-4 border-accent/50 hover:border-accent transition-colors duration-300">
-          <p class="font-semibold text-accent text-lg mb-2">✨ O símbolo secreto</p>
-          <p class="text-light/80">Sempre coloco uma flor vermelha escondida em cada vídeo ou arte. Quem encontrar pode ganhar um cargo especial na comunidade 😏</p>
-        </div>
-
-        <div class="p-5 glass-light rounded-xl border-l-4 border-accent/50 hover:border-accent transition-colors duration-300">
-          <p class="font-semibold text-accent text-lg mb-2">🤝 Nossa maior conquista</p>
-          <p class="text-light/80">Mais do que números, ver pessoas se tornando amigas e criando projetos juntos dentro da comunidade é o meu maior orgulho.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Atualizações Firebase -->
-  <section class="max-w-4xl mx-auto px-4 py-8 mb-16 relative z-10">
-    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-elegant font-bold text-center text-gradient text-shadow-glow mb-10">
-      Atualizações Recentes
-    </h2>
-    <div id="updatesContainer" class="space-y-4">
-      <p class="text-center text-light/60">Carregando novidades...</p>
-    </div>
-  </section>
-
-  <!-- Rodapé -->
-  <footer class="bg-darkLight/80 text-light py-8 px-4 text-center relative z-10 border-t border-primary/20">
-    <p class="mb-2">© 2025 - Todos os direitos reservados | KuroCommunity</p>
-    <p class="text-sm text-light/70">Criado com ❤️ e inspiração em paixão e beleza</p>
-  </footer>
-
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js"></script>
-  <script type="module" src="firebase-config.js"></script>
-  <script type="module" src="script.js"></script>
-
-  <!-- SCRIPT DAS CURIOSIDADES FUNCIONANDO 100% -->
-  <script>
-    const botao = document.getElementById('botaoCuriosidades');
-    const caixa = document.getElementById('caixaCuriosidades');
-
-    botao.addEventListener('click', () => {
-      caixa.classList.toggle('mostrar');
-      botao.textContent = caixa.classList.contains('mostrar') 
-        ? '🙈 Ocultar Segredos' 
-        : '🕵️‍♂️ Revelar Segredos Ocultos';
-    });
-  </script>
-</body>
-</html>
+        <li>Conteúdo exclusivo
